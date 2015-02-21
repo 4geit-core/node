@@ -1,0 +1,11 @@
+.template 0
+
+function global.node__indent
+  return string__fill(' ', 4)
+endfunction
+
+function global.indent
+  return node__indent()
+endfunction
+
+.endtemplate

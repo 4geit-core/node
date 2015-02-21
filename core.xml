@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<core name="node" branch="master">
+  <core name="string" required_branch="master"/>
+
+  <function name="indent"/>
+</core>
