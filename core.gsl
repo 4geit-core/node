@@ -1,7 +1,11 @@
 .template 0
 
 function global.node__indent
-  return string__fill(' ', 4)
+  if !defined(projectnode)
+    error('indent() can only be called within a node scope.')
+  endif
+  my.level = defined(projectnode.level) ?? projectnode.level*4 ? 4
+  return string__fill(' ', my.level)
 endfunction
 
 function global.indent
