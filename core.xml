@@ -2,5 +2,6 @@
 <core name="node" branch="master">
   <core name="string" required_branch="master"/>
 
+  <function name="set_level"/>
   <function name="indent"/>
 </core>
