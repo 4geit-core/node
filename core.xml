@@ -4,4 +4,6 @@
 
   <function name="set_level"/>
   <function name="indent"/>
+  <function name="count"/>
+  <function name="empty"/>
 </core>

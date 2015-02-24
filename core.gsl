@@ -1,6 +1,13 @@
 .template 0
 
+function check_error
+  if !defined(projectnode)
+    error('indent() can only be called within a node scope.')
+  endif
+endfunction
+
 function global.node__set_level
+  check_error()
   parent = projectnode.parent()
   if defined(parent) & defined(parent.level)
     define projectnode.level = parent.level + 1
@@ -14,15 +21,23 @@ function global.set_level
 endfunction
 
 function global.node__indent
-  if !defined(projectnode)
-    error('indent() can only be called within a node scope.')
-  endif
+  check_error()
   my.level = defined(projectnode.level) ?? projectnode.level*4 ? 4
   return string__fill(' ', my.level)
 endfunction
 
 function global.indent
   return node__indent()
+endfunction
+
+function global.node__count
+  check_error()
+  return count(projectnode., name() <> "protocol_node")
+endfunction
+
+function global.node__empty
+  check_error()
+  return !count(projectnode., name() <> "protocol_node")
 endfunction
 
 .endtemplate
