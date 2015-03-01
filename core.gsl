@@ -6,28 +6,30 @@ function check_error
   endif
 endfunction
 
-function global.node__set_level
+function global.node__set_level(n)
+  my.n ?= 0
   check_error()
   parent = projectnode.parent()
   if defined(parent) & defined(parent.level)
-    define projectnode.level = parent.level + 1
+    define projectnode.level = parent.level + my.n + 1
   else
-    define projectnode.level = 0
+    define projectnode.level = my.n
   endif
 endfunction
 
-function global.set_level
-  return node__set_level()
+function global.set_level(n)
+  return node__set_level(my.n)
 endfunction
 
-function global.node__indent
+function global.node__indent(n)
+  my.n ?= 4
   check_error()
-  my.level = defined(projectnode.level) ?? projectnode.level*4 ? 4
+  my.level = defined(projectnode.level) ?? projectnode.level*my.n ? my.n
   return string__fill(' ', my.level)
 endfunction
 
-function global.indent
-  return node__indent()
+function global.indent(n)
+  return node__indent(my.n)
 endfunction
 
 function global.node__count
