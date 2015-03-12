@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<core name="node" branch="master">
+<core name="node" branch="master" description="4i core library provides facilities at XML node level">
   <core name="string" required_branch="master"/>
 
   <function name="set_level"/>
